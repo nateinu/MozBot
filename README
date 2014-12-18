@@ -1,4 +1,20 @@
-This is the source code for "mozbot", the IRC bot who hangs out in the
-#mozilla channel at irc.mozilla.org.
+
+This project is a fork of Mozilla's MozBot.
+
+"This is the source code for "mozbot", the IRC bot who hangs out in the
+#mozilla channel at irc.mozilla.org."
+
+More information about the orginal project:
+https://wiki.mozilla.org/Mozbot
+
+Forked from Mozilla's CVS by the following method:
+$ cd /usr/local
+$ export CVSROOT=:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot
+$ cvs login
+CVS password: anonymous
+$ git cvsimport -d $CVSROOT -C mozbot -r cvs -k mozilla/webtools/mozbot
+
+Additional modules were imported from Patrick Connelly <patrick@deadlypenguin.com>.
+https://github.com/pcon/MozBot
 
 See the INSTALL file for installation and configuration instructions.
