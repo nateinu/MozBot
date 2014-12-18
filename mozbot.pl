@@ -123,6 +123,7 @@ use Carp qw(cluck confess);
 use Configuration; # internal
 use Mails; # internal
 use Encode;
+use File::Basename;
 
 # Net::IRC 0.74+ require Time::HiRes, if its missing, Net::IRC will fail with
 # a "No method called "time" for object." error during mozbot startup.
@@ -138,7 +139,7 @@ my $LOGFILEPREFIX;
 
 # variables that should only be changed if you know what you are doing
 my $LOGGING = 1; # set to '0' to disable logging
-my $LOGFILEDIR; # set this to override the logging output directory
+my $LOGFILEDIR = "logs"; # set this to override the logging output directory
 
 if ($LOGGING) {
     # set up the log directory
@@ -151,7 +152,8 @@ if ($LOGGING) {
             $LOGFILEDIR = (getpwuid($<))[7].'/log';
         }
     }
-    "$LOGFILEDIR/$0" =~ /^(.*)$/os; # untaints the evil $0.
+    my $program_name = basename $0;
+    "$LOGFILEDIR/$program_name" =~ /^(.*)$/os; # untaints the evil $0.
     $LOGFILEPREFIX = $1; # for some reason, $0 is considered tainted here, but not in other cases...
     mkdir($LOGFILEDIR, 0700); # if this fails for a bad reason, we'll find out during the next line
 }
@@ -1381,7 +1383,7 @@ sub debug {
                 close(LOG);
                 print "\n";
             } else {
-                print " [not logged, $!]\n";
+                print " [not logged to $LOGFILEPREFIX.$$.log, $!]\n";
             }
         }
     }
