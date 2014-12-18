@@ -21,3 +21,4 @@ nytprof.out
 *.dir
 *.log*
 *.cfg
+*.pid
