@@ -1,0 +1,12 @@
+[Unit]
+Description=Mozbot IRC Bot
+After=network.target
+
+[Service]
+User=mozbot
+WorkingDirectory=/usr/local/mozbot/
+ExecStart=/usr/local/mozbot/mozbot.pl
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
