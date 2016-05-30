@@ -928,7 +928,7 @@ sub newEvent($) {
 
 sub toToChannel {
     my $self = shift;
-    my $channel;
+    my $channel = '';
     foreach (@_) {
         if (/^[#&+\$]/os) {
             if (defined($channel)) {
