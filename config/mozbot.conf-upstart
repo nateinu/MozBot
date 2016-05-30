@@ -2,5 +2,7 @@ description "Mozbot IRC Bot"
 start on runlevel [2345]
 stop on runlevel [016]
 respawn
-chdir              /usr/local/mozbot/
-exec su mozbot -c "/usr/local/mozbot/mozbot.pl"
+setuid mozbot
+setgid mozbot
+chdir /usr/local/mozbot/
+exec  /usr/local/mozbot/mozbot.pl
