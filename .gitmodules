@@ -1,0 +1,3 @@
+[submodule "BotModules/pcon"]
+	path = BotModules/pcon
+	url = git@github.com:pcon/MozBot.git
